@@ -1,11 +1,28 @@
 import random
-genepool=[]
-genespercombo=2
-selectedgenes=[]
-offspring=[]
-genes={"G":8,"r":8,'B':9}
-finalresult=[]
-print("The genepool contains the following genes:")
+import os
+
+
+def creategenepool():
+    tempgene=[]
+    continue = True
+    while continue:
+        print("Type the gene you would like to add:")
+        genetype = input()
+        if type(genetype) is str and len(list(genetype))==0:
+            print("How many?")
+            numberofgenes=input()
+            if type(numberofgenes) is int:
+                for i in range(0,numberofgenes):
+                    tempgene.append(genetype)
+            else:
+                print("Invalid input")
+        elif genetype='':
+            print("Beginning pairing")
+        else:
+            print("Invalid genetype. Must be a character.")
+    return temegene
+
+genepool=creategenepool()
 for l in genes:
     number_of_genetype=genes.get(l)
     for g in range(number_of_genetype):
