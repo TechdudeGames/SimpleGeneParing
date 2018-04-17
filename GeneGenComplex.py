@@ -1,33 +1,31 @@
 import random
 import os
-
-
 def creategenepool():
     tempgene=[]
-    continue = True
-    while continue:
-        print("Type the gene you would like to add:")
+    iscontinue = True
+    while iscontinue:
+        print("Type the gene you would like to add. Type in nothing and press enter if you are done inputing genes")
         genetype = input()
-        if type(genetype) is str and len(list(genetype))==0:
+        if type(genetype) is str and len(list(genetype))==1:
             print("How many?")
-            numberofgenes=input()
-            if type(numberofgenes) is int:
-                for i in range(0,numberofgenes):
-                    tempgene.append(genetype)
-            else:
-                print("Invalid input")
-        elif genetype='':
+            try:
+              number=int(input())
+              for i in range(0,number):
+                tempgene.append(genetype)
+            except:
+              print("Invalid Input")
+        elif genetype=='':
             print("Beginning pairing")
+            iscontinue=False
         else:
             print("Invalid genetype. Must be a character.")
-    return temegene
+    return tempgene
 
 genepool=creategenepool()
-for l in genes:
-    number_of_genetype=genes.get(l)
-    for g in range(number_of_genetype):
-        genepool.append(l)
-    print(str(genes.get(l))+" "+l+" "+"genes.")
+genespercombo=2
+selectedgenes=[]
+offspring=[]
+finalresult=[]
 while len(genepool) >= genespercombo:
     while len(selectedgenes) != genespercombo:
         selection=genepool[random.randrange(0,len(genepool))]
